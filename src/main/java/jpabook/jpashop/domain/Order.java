@@ -17,6 +17,10 @@ public class Order {
     @JoinColumn(name = "member_id")
     private Member member;
 
+    @OneToOne
+    @JoinColumn(name = "delivery_id")
+    private Delivery delivery;
+
     @Column(name = "order_date")
     private LocalDateTime orderDate;
 
@@ -25,6 +29,8 @@ public class Order {
 
     @OneToMany(mappedBy = "order")
     private List<OrderItem> orderItems = new ArrayList<>();
+
+
 
     public void addOrderItem(OrderItem orderItem) {
         orderItems.add(orderItem);
